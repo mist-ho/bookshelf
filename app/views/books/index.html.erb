@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>書籍一覧</h1>
+   
+<div class="books"> 
+  <% @books.each do |book| %>
+    <div class="book">
+      <h2 class="book__title"><%= book.title %></h2>
+      <p class="book__price"><%= book.price %></p>
+      <ul class="book__actions">
+        <li class="book__action--show"><%= link_to '詳細', book %></li>
+        <li class="book__action--edit"><%= link_to '編集', edit_book_path(book) %></li>
+        <li class="book__action--delete"><%= link_to '削除', book, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Book', new_book_path %>
